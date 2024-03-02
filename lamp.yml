@@ -1,0 +1,29 @@
+#Create a docker compose file to setup the LAMP architecture
+version: '3.8'
+services:
+  mydb:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: testcloud
+
+  apache:
+    image: httpd
+    ports:
+      - 8989:80
+    links:
+      -mydb:mysql
+
+  php:
+    image: php:7.2-apache
+    links:
+      -mydb:mysql
+      -apache:httpd
+...
+
+##To create container from the above file
+
+# docker-compose -f lamp.yml up -d
+
+##To delete the containers
+
+#docker-compose -f lamp.yml down
