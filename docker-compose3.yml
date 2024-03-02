@@ -1,0 +1,16 @@
+#Create a docker compose file to setup an asminer app and postgress db
+
+version: '3.8'
+services:
+  mydb:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: testcloud
+
+  myadminer:
+    image: adminer
+    ports:
+      - 8888:80
+    links:
+      - mydb:postgres
+...
