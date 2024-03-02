@@ -16,3 +16,13 @@ services:
     links:
       mydb:mysql
 ...
+
+#To setup the containers from the above file
+docker-compose up -d
+#To stop all the container of the docker compose file
+docker-compose stop
+#To start the container
+docker-compose start
+
+#To stop and delete
+docker-compose down
